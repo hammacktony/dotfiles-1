@@ -9,7 +9,7 @@
 # Plugin manager
 - name: Install Vundle
   git: repo=https://github.com/gmarik/Vundle.vim.git
-       dest=~/.vim/bundle/Vundle.vim
+       dest=/home/austin/.vim/bundle/Vundle.vim
        update=no
 
 # Configuration
@@ -29,7 +29,7 @@
   failed_when: False
 
 - name: Backup vimrc
-  command: mv ~/.vimrc ~/.vimrc.bak
+  command: mv /home/austin/.vimrc /home/austin/.vimrc.bak
   args:
     creates: "{{dotfiles_user_home}}/.vimrc.bak"
   when: vimrc_stat.stat.exists

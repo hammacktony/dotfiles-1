@@ -9,10 +9,10 @@ setopt histignorealldups sharehistory
 # Use emacs keybindings even if our EDITOR is set to vi
 bindkey -e
 
-# Keep 1000 lines of history within the shell and save it to ~/.zsh_history:
+# Keep 1000 lines of history within the shell and save it to /home/austin/.zsh_history:
 HISTSIZE=1000
 SAVEHIST=1000
-HISTFILE=~/.zsh_history
+HISTFILE=/home/austin/.zsh_history
 
 # Use modern completion system
 autoload -Uz compinit
@@ -43,7 +43,7 @@ export VISUAL=vim
 # Aliases
 alias c=clear
 alias g=git
-alias reload!='source ~/.zshrc'
+alias reload!='source /home/austin/.zshrc'
 alias j=autojump
 alias e=$EDITOR
 alias pg='ps -ef | grep'

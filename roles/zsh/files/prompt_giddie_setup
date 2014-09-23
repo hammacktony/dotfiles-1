@@ -29,8 +29,8 @@ function +vi-git_precmd() {
 }
 
 function prompt_giddie_precmd {
-  # Replace '/home/<user>' with '~'.
-  _prompt_giddie_pwd="${PWD/#$HOME/~}"
+  # Replace '/home/<user>' with '/home/austin'.
+  _prompt_giddie_pwd="${PWD/#$HOME//home/austin}"
   vcs_info
 }
 

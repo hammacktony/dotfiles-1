@@ -3,13 +3,13 @@
 export ZSH=$HOME/dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/projects
+export PROJECTS=/home/austin/projects
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
+if [[ -a /home/austin/.localrc ]]
 then
-  source ~/.localrc
+  source /home/austin/.localrc
 fi
 
 
@@ -48,3 +48,6 @@ done
 unset config_files
 # Make autoenv always work
 cd .
+
+alias jctl='journalctl -f -l SYSLOG_IDENTIFIER=pulp + SYSLOG_IDENTIFIER=celery + SYSLOG_IDENTIFIER=httpd'
+unalias cd

@@ -22,7 +22,7 @@ KEY:
 [] branch exists locally and remotely
 
 x merge occurs both locally and remotely
-~ merge occurs only locally
+/home/austin merge occurs only locally
   (space) branch isn't merged in
 
 (It's possible for merges to occur remotely and not locally, of course, but
@@ -94,7 +94,7 @@ $all_commits = ARGV.delete("--all-commits") || ARGV.delete("-A")
 $dump_config = ARGV.delete("--dump-config")
 $key = ARGV.delete("--key") || ARGV.delete("-k")
 $show_relations = ARGV.delete("--relations") || ARGV.delete("-r")
-ARGV.each { |a| abort "Error: unknown argument #{a}." if a =~ /^--/ }
+ARGV.each { |a| abort "Error: unknown argument #{a}." if a =/home/austin /^--/ }
 
 ## search up the path for a file
 def find_file fn
@@ -154,7 +154,7 @@ def widget merged_in, remote_only=false, local_only=false, local_only_merge=fals
     else %w([ ])
   end
   middle = case
-    when merged_in && local_only_merge; green("~")
+    when merged_in && local_only_merge; green("/home/austin")
     when merged_in; green("x")
     else " "
   end

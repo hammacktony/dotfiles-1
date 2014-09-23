@@ -13,7 +13,7 @@
   register: zshrc_stat
 
 - name: Back up zshrc if it exists
-  command: mv ~/.zshrc ~/.zshrc.bak
+  command: mv /home/austin/.zshrc /home/austin/.zshrc.bak
   args:
     creates: "{{dotfiles_user_home}}/.zshrc.bak"
   when: zshrc_stat.stat.exists

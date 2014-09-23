@@ -12,7 +12,7 @@ endif
 """"" PLUGINS """""
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=/home/austin/.vim/bundle/Vundle.vim
 call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
@@ -77,7 +77,7 @@ silent! colorscheme Tomorrow-Night-Eighties
 set list
 set listchars=tab:▸\ ,trail:▫
 
-if &term =~ '256color'
+if &term =/home/austin '256color'
   set t_ut=
 endif
 
@@ -101,7 +101,7 @@ set wildignore+=log/**,node_modules/**,target/**,tmp/**,*.rbc/,.git/*,*/.hg/*,*/
 set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
 set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-set wildignore+=*.swp,*~,._*
+set wildignore+=*.swp,*/home/austin,._*
 set wildignore+=*.pyc
 " Enable basic mouse behavior such as resizing buffers.
 set mouse=a
@@ -113,14 +113,14 @@ endif
 " Persistent undo
 if exists("+undofile")
 " undofile - This allows you to use undos after exiting and restarting
-" This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
+" This, like swap and backups, uses .vim-undo first, then /home/austin/.vim/undo
 " :help undo-persistence
 " This is only present in 7.3+
   if isdirectory($HOME . '/.vim/undo') == 0
-    :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+    :silent !mkdir -p /home/austin/.vim/undo > /dev/null 2>&1
   endif
   set undodir=./.vim-undo//
-  set undodir+=~/.vim/undo//
+  set undodir+=/home/austin/.vim/undo//
   set undofile
 endif
 

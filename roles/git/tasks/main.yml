@@ -16,7 +16,7 @@
   register: gitconfig_stat
 
 - name: Back up gitconfig
-  command: mv ~/.gitconfig ~/.gitconfig.bak
+  command: mv /home/austin/.gitconfig /home/austin/.gitconfig.bak
   args:
     creates: "{{dotfiles_user_home}}/.gitconfig.bak"
   when: gitconfig_stat.stat.exists

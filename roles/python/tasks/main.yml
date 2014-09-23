@@ -1,6 +1,6 @@
 
 - name: Check if miniconda is installed
-  stat: path="{{ '~/miniconda' | expanduser }}"
+  stat: path=home/austin/miniconda
   register: miniconda_stat
 
 - include: install.yml
@@ -11,7 +11,7 @@
   register: pytest_stat
 
 - name: Back up pytest.ini file
-  command: mv ~/pytest.ini ~/pytest.ini.bak
+  command: mv /home/austin/pytest.ini /home/austin/pytest.ini.bak
   args:
     creates: "{{dotfiles_user_home}}/pytest.ini"
   when: pytest_stat.stat.exists
@@ -27,12 +27,12 @@
   register: flake8_stat
 
 - name: Back up flake8 file
-  command: mv ~/.config/flake8 ~/.config/flake8.bak
+  command: mv /home/austin/.config/flake8 /home/austin/.config/flake8.bak
   args:
     creates: "{{dotfiles_user_home}}/.config/flake8.bak"
   when: flake8_stat.stat.exists
 
-- name: Make sure ~/.config exists
+- name: Make sure /home/austin/.config exists
   file: path="{{dotfiles_user_home}}/.config" state=directory
 
 - name: Link flake8 file

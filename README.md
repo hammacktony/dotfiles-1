@@ -32,9 +32,9 @@ install
 
 ```bash
 # Replace git url with your fork
-# NOTE: It is important that you clone to ~/dotfiles
-$ git clone https://github.com/YOU/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
+# NOTE: It is important that you clone to /home/austin/dotfiles
+$ git clone https://github.com/YOU/dotfiles.git /home/austin/dotfiles
+$ cd /home/austin/dotfiles
 ```
 
 - Update the following variables in `group_vars/local` (at a minimum)
@@ -72,7 +72,7 @@ There are three main commands in the `bin` directory for setting up and updating
 special files
 -------------
 
-All configuration is done in `~/dotfiles`. Each role may contain (in addition to the typical ansible directories and files) a number of special files
+All configuration is done in `/home/austin/dotfiles`. Each role may contain (in addition to the typical ansible directories and files) a number of special files
 
 - **role/\*.zsh**: Any files ending in `.zsh` get loaded into your environment.
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made available everywhere.
@@ -86,7 +86,7 @@ To install fonts on OSX, simply drag the `.ttf` files in `misc/fonts` directory 
 
 **python**
 
-The `python` topic installs the [Anaconda Python distribution](https://store.continuum.io/cshop/anaconda/) using the [miniconda](http://conda.pydata.org/miniconda.html) installer. The installation is entirely self-contained, and lives at `~/miniconda`.
+The `python` topic installs the [Anaconda Python distribution](https://store.continuum.io/cshop/anaconda/) using the [miniconda](http://conda.pydata.org/miniconda.html) installer. The installation is entirely self-contained, and lives at `/home/austin/miniconda`.
 
 **iterm2 color themes**
 

@@ -9,7 +9,8 @@
   when: tmux_install_tmuxinator
 
 - name: Symlink .tmux.conf
+  when: ansible_os_family == "Darwin"
   file:
     src: "{{ dotfiles_home }}/roles/tmux/files/tmux.conf"
-    dest: "{{'~/.tmux.conf' | expanduser }}"
+    dest: /home/austin/.tmux.conf
     state: link
