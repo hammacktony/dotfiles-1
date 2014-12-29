@@ -8,3 +8,6 @@ alias pg='ps -ef | grep'
 alias reload!='. /home/austin/.zshrc'
 alias zshconfig="exec $EDITOR /home/austin/.zshrc"
 alias vimrc="exec $EDITOR /home/austin/.vimrc"
+alias valias='exec $EDITOR /home/austin/dotfiles/roles/zsh/aliases.zsh'
+
+alias jpulp='cd /home/austin/code/pulp'

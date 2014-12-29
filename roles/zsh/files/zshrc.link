@@ -45,9 +45,13 @@ do
   source $file
 done
 
+source "/home/austin/.zprezto/modules/completion/init.zsh"
+
 unset config_files
 # Make autoenv always work
 cd .
 
 alias jctl='journalctl -f -l SYSLOG_IDENTIFIER=pulp + SYSLOG_IDENTIFIER=celery + SYSLOG_IDENTIFIER=httpd'
-unalias cd
+
+setxkbmap -option caps:escape
+

@@ -5,10 +5,10 @@
 - name: Set up local development environment
   hosts: local
   roles:
-    - git
+  # - git
     - {role: package_manager, tags: ['bootstrap']}
 #    - {role: zsh, tags: ['bootstrap']}
-    - vim
+# - vim
     # - python
     # - hub
     # - autojump
