@@ -1,9 +1,9 @@
 # Uses git's autocompletion for inner commands. Assumes an install of git's
 # bash `git-completion` script at $completion below (this is where Homebrew
 # tosses it, at least).
-completion='/home/austin/dotfiles/roles/zsh/files/git-completion.zsh'
+# completion='/etc/bash_completion.d/git'
 
-if test -f $completion
-then
-  source $completion
-fi
+# if test -f $completion
+# then
+#   source $completion
+# fi

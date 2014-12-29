@@ -27,7 +27,9 @@ function +vi-git_precmd() {
     hook_com[unstaged]+='%F{green}?%f'
   fi
 }
-
+function virtualenv_info {
+    [ $VIRTUAL_ENV ] && echo '('`basename $VIRTUAL_ENV`') '
+}
 function prompt_giddie_precmd {
   # Replace '/home/<user>' with '/home/austin'.
   _prompt_giddie_pwd="${PWD/#$HOME//home/austin}"
@@ -67,7 +69,7 @@ function prompt_giddie_setup {
   # Define prompts.
   PROMPT='%(?..%F{red}%B-> [%?]%b%f
 )%F{magenta}%n%f@%F{yellow}%m%f|%F{green}${_prompt_giddie_pwd}%f${vcs_info_msg_0_}
-%F{blue}${_prompt_giddie_symbol}%f '
+%F{blue}$(virtualenv_info)%f %F{red}${_prompt_giddie_symbol}%f '
   RPROMPT='${editor_info[keymap]}'
   SPROMPT='zsh: correct %F{magenta}%R%f to %F{green}%r%f [nyae]? '
 }

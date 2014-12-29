@@ -12,8 +12,8 @@ alias pipgrep="pip freeze | grep "
 alias mkenv="conda create python=3 ipython pip -n "
 alias mkenv2="conda create python=2 ipython pip -n "
 alias lsenv="conda info -e"
-alias wo="source activate"
-alias de="source deactivate"
+alias wo="workon"
+alias de="deactivate"
 
 # Remove python compiled byte-code in either current directory or in a
 # list of specified directories
