@@ -11,3 +11,11 @@ alias vimrc="exec $EDITOR /home/austin/.vimrc"
 alias valias='exec $EDITOR /home/austin/dotfiles/roles/zsh/aliases.zsh'
 
 alias jpulp='cd /home/austin/code/pulp'
+
+#alias workmonitors="xrandr --output DP2-3 --auto --right-of eDP1 && xrandr --output DP2-1 --auto --right-of DP2-3"
+alias workmonitors="xrandr --output DP2-3 --auto --right-of eDP1 && xrandr --output DP2-1 --auto --right-of DP2-3"
+alias workmonitors2="xrandr --output DP2-1 --auto --right-of eDP1 && xrandr --output DP2-3 --auto --right-of DP2-1"
+
+alias vmtime="sudo virt-manager && exit"
+
+
