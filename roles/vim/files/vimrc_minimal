@@ -1,26 +1,21 @@
 set nocompatible              " be iMproved
-
 " Spacebar is a much better leader than \ or ,
 let mapleader = "\<Space>"
 
-" Automatically source the vimrc file after saving it
-autocmd bufwritepost .vimrc source $MYVIMRC
-
 """"" PLUGINS """""
 call plug#begin()
-Plug 'rking/ag.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 " Go to symbol
-" Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
+Plug 'ctrlpvim/ctrlp.vim' " Fuzzy-matching go-to file
+" Make ctrlp faster
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 if executable('ag')
-" Use Ag over Grep
-  set grepprg=ag\ --nogroup\ --nocolor
-  " Use ag in CtrlP for listing files.
-  let g:ctrlp_user_command = 'ag %s -i -l --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''.ropeproject'' --ignore ''node_modules'' --hidden -g ""'
+  Plug 'rking/ag.vim'
+  " Use Ag over Grep
+  set grepprg=ag\ --nogroup\ --nocolor\ --column
   nnoremap <leader>f :Ag<space>
-else
-  Plug 'mileszs/ack.vim'
-  noremap <leader>f :Ack<space>
+  " Search for term under the cursor
+  nmap <leader>F :Ag <c-r>=expand("<cword>")<cr>
 endif
 map <leader>s :CtrlPBufTag<CR>
 Plug 'ervandew/supertab'
@@ -30,7 +25,7 @@ nnoremap <leader>d :NERDTreeToggle<CR>
 nnoremap <leader>D :NERDTreeFind<CR>
 
 " Colors
-Plug 'flazz/vim-colorschemes'
+Plug 'sloria/vim-hybrid'  " hybrid with easier-to-read line numbers
 
 " Buffers
 Plug 'ap/vim-buftabline'
@@ -39,8 +34,8 @@ nnoremap X :Bdelete<CR>
 
 Plug 'tpope/vim-commentary'
 " Toggle comment with space-/
-nmap <leader>/ gcc
-vmap <leader>/ gc
+nmap <leader>/ <Plug>CommentaryLine
+vmap <leader>/ <Plug>Commentary
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
@@ -56,18 +51,17 @@ filetype plugin indent on    " required
 """ end plugins """
 
 """ BASE CUSTOMIZATIONS """
+" NOTE: Many base customzations come from vim-sensible and vim-opinion
 set encoding=utf-8
+set relativenumber
 set autoindent
 set autoread " reload files when changed on disk, i.e. via `git checkout`
-set backupcopy=yes
 set clipboard=unnamed " Make "yanks" work with system clipboard
 set wildmenu wildmode=longest,list,full
 
 " Indents
 set expandtab " expand tabs by default (overloadable per file type later)
-set tabstop=4 " a tab is 4 spaces
-set softtabstop=4 " when hitting <BS>, pretend like a tab is removed, even if spaces
-set shiftwidth=4 " number of spaces to use for autoindenting
+set tabstop=4 softtabstop=4 shiftwidth=4
 set shiftround " use multiple of shiftwidth when indenting with '<' and '>'
 
 " No bells
@@ -75,15 +69,15 @@ set noerrorbells visualbell t_vb=
 """ VISUAL SETTINGS """
 
 set t_Co=256 " Must be 256 for many themes to display correctly
-silent! colorscheme hybrid
+if &term =~ '256color' | set t_ut= | endif
+" Favorites: hybrid iceberg jellybeans Tomorrow hybrid-light
+silent! colorscheme hybrid-sl
 
 " Show trailing whitespace
 set list listchars=tab:▸\ ,trail:▫
 
 " Check is necessary because breakindent isn't yet available on MacVim =(
 if exists('&breakindent') | set breakindent showbreak=.. | endif
-
-if &term =~ '256color' | set t_ut= | endif
 
 set cursorline  " have a line indicate cursor location
 set previewheight=25  " Larger preview height
@@ -92,39 +86,18 @@ set previewheight=25  " Larger preview height
 set winwidth=79 winheight=5 winminheight=5
 
 " Patterns for expand(), ctrlp, etc. to ignore
-set wildignore+=log/**,node_modules/**,target/**,tmp/**,*.rbc/,.git/*,*/.hg/*,*/.svn/*
-" Disable output, vcs, archive, rails, temp and backup files.
-set wildignore+=*.o,*.out,*.obj,.git,*.rbc,*.rbo,*.class,.svn,*.gem
-set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz
-set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
-set wildignore+=*.swp,*~,._*
-set wildignore+=*.pyc
-" Enable basic mouse behavior such as resizing buffers.
-set mouse=a mousemodel=popup " Right-click pops up a menu
+set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.swp,*~,._*,*.pyc,*__pycache__*
 if exists('$TMUX') " Support resizing in tmux
   set ttymouse=xterm2
 endif
 
-" Persistent undo
+" Persistent undo (can use undos after exiting and restarting
 if exists("+undofile")
-" undofile - This allows you to use undos after exiting and restarting
-" This, like swap and backups, uses .vim-undo first, then ~/.vim/undo
-" :help undo-persistence
   if isdirectory($HOME . '/.vim/undo') == 0
     :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
   endif
   set undodir=./.vim-undo// undodir+=~/.vim/undo// undofile
 endif
-
-" Make sure Vim returns to the same line when you reopen a file.
-" Thanks, Amit
-augroup line_return
-    au!
-    au BufReadPost *
-        \ if line("'\"") > 0 && line("'\"") <= line("$") |
-        \     execute 'normal! g`"zvzz' |
-        \ endif
-augroup END
 
 " Change cursor style when entering INSERT mode (works in tmux!)
 if exists('$TMUX')
@@ -135,13 +108,16 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
-" Always focus on splited window.
-nnoremap <C-w>s <C-w>s<C-w>w
-nnoremap <C-w>v <C-w>v<C-w>w
-
 """ SHORTCUTS """
+" Quickly edit vimrc
+nmap <leader>, :e $MYVIMRC<CR>
+" Reload vimrc
+noremap <silent> <leader>V :source $MYVIMRC<cr>
 " Smash escape
 inoremap jk <Esc>
+" Search and replace, using : as a separator instead of /
+noremap <leader>sr :%s:::cg<Left><Left><Left><Left>
+noremap <leader>sR :%s:::g<Left><Left><Left>
 " Switch between files
 nnoremap <leader>b :e#<CR>
 " Quicker window movement
@@ -163,20 +139,17 @@ nnoremap gp `[v`]
 nnoremap <leader>Tp :set ft=python<CR>
 nnoremap <leader>Tj :set ft=javascript<CR>
 nnoremap <leader>Tr :set ft=rst<CR>
-" Quickly edit vimrc
-nmap <leader>, :e $MYVIMRC<CR>
-" Quickly write/quit/save-and-quit
+" Quickly write/quit
 nnoremap <leader>w :w<CR>
 nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :wq<CR>
 " Quickly open netrw
 nnoremap <leader>e :e.<CR>
 " Unhighlight search
 nnoremap <Leader>n :nohlsearch<CR><C-L>
 " Quick split
 nnoremap <Leader>v <C-w>v<C-w>w
-" Quick copy whole file
-map <leader>a :%y+<CR>
+" Quick select whole file
+map <leader>a ggVG
 " Make D delete to end of line
 nnoremap D d$
 " Make Y yank to end of line
@@ -192,9 +165,13 @@ nmap k gk
 "" Tabs
 nnoremap <silent> tt :tabnew<CR>
 
-""" Languages
 augroup configgroup
   autocmd!
+  " Make sure Vim returns to the same line when you reopen a file.
+  autocmd BufReadPost *
+      \ if line("'\"") > 0 && line("'\"") <= line("$") | execute 'normal! g`"zvzz' | endif
+
+  """ Languages
   " rst
   autocmd BufNewFile,BufRead *.txt setlocal ft=rst
   autocmd FileType rst setlocal wrap nolist expandtab lbr shiftwidth=4 tabstop=4 softtabstop=4
@@ -216,9 +193,7 @@ augroup END
 " GUI settings, e.g. MacVim
 set guifont=Ubuntu\ Mono:h14
 if has('gui_running')
-    if has('mac')
-        set transparency=5
-        " Hide scrollbars in MacVim
-        set guioptions-=Tr guioptions-=r go-=L
-    endif
+  set transparency=5
+  " Hide scrollbars
+  set guioptions-=Tr guioptions-=r go-=L
 endif

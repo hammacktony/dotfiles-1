@@ -41,14 +41,9 @@ Leader is `Space`.
 - `<space-m>`: Run test method.
 - `<space-c>`: Run test class.
 - `<space-tf>`: Run test function.
-- `<space-F>`: Run all test in file.
+- `<space-tF>`: Run all test in file.
 
 #### Jedi
-
-- `<C-c>g`: Go to definition.
-- `<C-c>r`: Rename variable.
-
-### Javascript
 
 - `<C-c>g`: Go to definition.
 - `<C-c>r`: Rename variable.
@@ -59,5 +54,6 @@ Leader is `Space`.
 - `<space-gb>`: git blame
 - `<space-gp>`: git push
 - `<space-gh>`: Stage hunk.
-- `<space-gB>`: git Browse (go to corresponding file or selected lines on Github)
+- `<space-gH>`: Unstage hunk.
 - `]h` and `[h`: Go to next/previous hunk.
+- `<space-gB>`: git Browse (go to corresponding file or selected lines on Github)
