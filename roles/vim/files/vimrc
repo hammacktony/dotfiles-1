@@ -63,6 +63,9 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_enable_balloons = 0
 " Non-blocking python checking
 Plug 'alfredodeza/khuno.vim'
+noremap <leader>k :Khuno show<CR>
+let g:khuno_max_line_length = 100
+" let g:khuno_max_line_length = 79
 
 " NICE TO HAVE
 Plug 'bling/vim-airline'
@@ -91,7 +94,7 @@ nmap <silent><Leader>m :Pytest method verbose<CR>
 nmap <silent><Leader>tf :Pytest function verbose<CR>
 
 Plug 'mattn/emmet-vim'  " Write HTML fast
-Plug 'Raimondi/delimitMate'  " autoclose parens, quotes, etc.
+" Plug 'Raimondi/delimitMate'  " autoclose parens, quotes, etc.
 Plug 'justinmk/vim-sneak'  " Quickly move around
 let g:sneak#streak = 1
 Plug 'greyblake/vim-preview'  "For previewing markdown, rst, etc.
