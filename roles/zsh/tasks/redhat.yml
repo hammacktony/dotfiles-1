@@ -1,5 +1,7 @@
 - name: Make sure zsh is installed
-  yum: name=zsh state=present
-  become_method: sudo
+  dnf: name=zsh state=present
+  become: true
 
-# TODO: Set zsh as login shell
+- name: Change default shell to zsh
+  user: name={{ansible_user_id}} shell=/bin/zsh
+  become: true

@@ -57,9 +57,6 @@ alias pg='ps -ef | grep'
 # Syntax-highlighted cat (requires python-pygments)
 alias dog="pygmentize -g"
 
-# Enable z script
-source ~/dotfiles/roles/z/enable.zsh
-
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
 if [[ -a ~/.localrc ]]

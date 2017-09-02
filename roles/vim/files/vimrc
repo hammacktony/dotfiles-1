@@ -18,11 +18,6 @@ if has('python') ||  has('python3')
   let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
 endif
 let g:ctrlp_funky_syntax_highlight = 1
-Plug 'dyng/ctrlsf.vim'  " ag-powered search with in-place editing
-let g:ctrlsf_ackprg = 'rg'
-nmap     <C-f>f :CtrlSF ''<Left>
-nmap     <C-f>n <Plug>CtrlSFCwordPath
-nnoremap <C-f>t :CtrlSFToggle<CR>
 Plug 'tpope/vim-rsi'  " unix keybindings in insert mode
 Plug 'tpope/vim-repeat'  " make more actions repeatable with .
 Plug 'tpope/vim-surround'  " motions for handling surrounding characters
