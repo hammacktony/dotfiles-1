@@ -216,7 +216,8 @@ inoremap jk <Esc>
 " Search and replace, using : as a separator instead of /
 noremap <leader>sr :%s:::cg<Left><Left><Left><Left>
 " Switch between files
-nnoremap <leader>b :e#<CR>
+nnoremap <leader>] :bn<CR>
+nnoremap <leader>[ :bp<CR>
 " Remove trailing whitespace with Backspace
 nnoremap <BS> :%s/\s\+$//<cr>:let @/=''<CR>
 " select last pasted text
