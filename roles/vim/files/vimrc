@@ -50,7 +50,12 @@ let g:ale_linters.html = []
 let g:ale_fixers = {}
 let g:ale_fixers.javascript = ['prettier']
 let g:ale_fixers.python = ['isort']
+" let g:ale_python_flake8_executable = "python3"
+let g:ale_python_flake8_options = "--config /home/austin/3dev/pulp/flake8.cfg"
+" let g:ale_python_flake8_options = "--config /home/austin/3dev/warehouse/setup.cfg"
+" flake8 --config /home/austin/3dev/pulp/flake8.cfg"
 " Make prettier play nicely with eslint-airbnb
+" let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
 let g:ale_javascript_prettier_options = ' --single-quote --trailing-comma all'
 
 " NICE TO HAVE
@@ -91,7 +96,7 @@ Plug 'mattn/emmet-vim'  " Write HTML fast
 let g:user_emmet_settings = {
   \    'javascript': {'extends': 'html', 'attribute_name': {'class': 'className'}}
   \ }
-Plug 'jiangmiao/auto-pairs' " autoclose parens, quotes, etc.
+" Plug 'jiangmiao/auto-pairs' " autoclose parens, quotes, etc.
 if has('mac')
   Plug 'junegunn/vim-xmark', { 'do': 'make' }  " Live markdown preview
 endif
@@ -193,7 +198,7 @@ set cursorline  " have a line indicate cursor location
 set previewheight=25  " Larger preview height
 
 " Set minimum window size to 79x5.
-set winwidth=79 winheight=5 winminheight=5
+set winwidth=99 winheight=5 winminheight=5
 
 " Patterns to ignore for expand(), ctrlp, etc.
 set wildignore+=*.zip,*.tar.gz,*.tar.bz2,*.rar,*.tar.xz,*.swp,*~,._*,*.pyc,*__pycache__*,*.egg-info
@@ -270,7 +275,7 @@ augroup configgroup
   """ Languages
   " prose (hard wrap and autoformat paragraphs)
   autocmd BufRead,BufNewFile jrnl*.txt,editor*.txt set filetype=markdown
-  autocmd BufRead,BufNewFile jrnl*.txt,editor*.txt,*.md,*.rst setlocal nolist formatoptions+=ntl textwidth=72 wrapmargin=0
+  autocmd BufRead,BufNewFile jrnl*.txt,editor*.txt,*.md,*.rst setlocal nolist formatoptions+=ntl textwidth=99 wrapmargin=0
   autocmd BufRead,BufNewFile .eslintrc set filetype=json
   " commit messages
   autocmd Filetype gitcommit setlocal nolist textwidth=72
@@ -280,3 +285,6 @@ augroup END
 set guifont=Ubuntu\ Mono:h14
 " Hide scrollbars and menu
 set guioptions-=T guioptions-=R guioptions-=r guioptions-=m guioptions-=l guioptions-=L
+" remove all white spaces on save
+autocmd BufWritePre * %s/\s\+$//e
+set tw=99
