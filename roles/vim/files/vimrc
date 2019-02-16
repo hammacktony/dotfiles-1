@@ -47,18 +47,19 @@ let g:ale_linters = {}
 let g:ale_linters.javascript = ['eslint']
 let g:ale_linters.python = ['flake8']
 let g:ale_linters.html = []
-let g:ale_fixers = {}
-let g:ale_fixers.javascript = ['prettier']
-let g:ale_fixers.python = ['isort']
+" let g:ale_fixers = {}
+" let g:ale_fixers.javascript = ['prettier']
+" let g:ale_fixers.python = ['isort']
 " let g:ale_python_flake8_executable = "python3"
-let g:ale_python_flake8_options = "--config /home/austin/3dev/pulp/flake8.cfg"
-" let g:ale_python_flake8_options = "--config /home/austin/3dev/warehouse/setup.cfg"
+let g:ale_python_flake8_options = "--config /home/austin/devel/pulp/flake8.cfg"
+" let g:ale_python_flake8_options = "--config /home/austin/devel/warehouse/setup.cfg"
 " flake8 --config /home/austin/3dev/pulp/flake8.cfg"
 " Make prettier play nicely with eslint-airbnb
-" let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
+let g:ale_python_flake8_executable = 'python3'   " or 'python' for Python 2
 let g:ale_javascript_prettier_options = ' --single-quote --trailing-comma all'
 
 " NICE TO HAVE
+Plug 'AndrewRadev/linediff.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 let g:airline_left_sep=''

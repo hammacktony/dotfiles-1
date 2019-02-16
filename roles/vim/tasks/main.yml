@@ -1,5 +1,8 @@
-- name: install vim
-  include: redhat.yml
+- name: Install vim with yum
+  dnf:
+    name=vim
+    state=latest
+  become: yes
 
 # Plugin manager
 - name: Makes sure autoload directory exists

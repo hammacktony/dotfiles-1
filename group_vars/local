@@ -7,6 +7,12 @@ dotfiles_user_home: "{{ '~' | expanduser }}"
 # Where your dotfiles live. Probably don't need to change this.
 dotfiles_home: "{{dotfiles_user_home}}/dotfiles"
 
+# Where your virtual environments live
+venv_dir: "{{dotfiles_user_home}}/.virtualenvs}}"
+
+user_devel_dir: "{{dotfiles_user_home}}/devel"
+
+
 # Name used in commit messages
 full_name: Austin Macdonald
 # Git
@@ -28,5 +34,4 @@ vim_install_plugins: yes
 utilities_to_install:
   - httpie
   - wget
-  - google-chrome
   - vagrant

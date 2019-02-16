@@ -1,6 +1,22 @@
+- block:
+  - name: Upgrade all packages
+    dnf:
+      name: "*"
+      state: latest
 
-- name: Upgrade all packages
-  dnf:
-    name: "*"
-    state: latest
-  sudo: yes
+  - name: Install required packages
+    package:
+      name: "{{item}}"
+      state: latest
+    loop:
+      - libselinux-python
+      - vagrant
+      - sshfs
+      - vagrant-sshfs
+      - vagrant-hostmanager
+      - docker
+      - httpie
+
+
+
+  become: yes

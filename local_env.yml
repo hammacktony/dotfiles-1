@@ -7,5 +7,7 @@
   roles:
     - dnf
     - git
+    - python
     - vim
     - zsh
+    - repositories
