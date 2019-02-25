@@ -26,6 +26,7 @@ alias jd='cd ~/devel/devel'
 alias jpy='cd ~/devel/pulp_python'
 alias jf='cd ~/devel/pulp_file'
 alias jdock='cd ~/devel/pulp_docker'
+alias jl='cd ~/devel/pulplift'
 
 alias jt='cd ~/devel/plugin_template'
 alias rm-mig='rm -rf ~/devel/pulp/platform/pulpcore/app/migrations'
