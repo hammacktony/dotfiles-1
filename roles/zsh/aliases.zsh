@@ -16,9 +16,11 @@ alias vi="vim"
 alias v="vim"
 
 # Pulp
+alias ja='cd ~/devel/ansible-pulp'
+alias jd='cd ~/devel/pulp_docker'
+alias jdot='cd ~/dotfiles/'
+alias jf='cd ~/devel/pulp_file'
+alias jl='cd ~/devel/pulplift'
 alias jp='cd ~/devel/pulpcore'
 alias jpp='cd ~/devel/pulpcore-plugin'
-alias jd='cd ~/devel/pulp_docker'
-alias jf='cd ~/devel/pulp_file'
 alias jpy='cd ~/devel/pulp_python'
-alias rmmig='rm -rf ~/3dev/pulp/platform/pulpcore/app/migrations'

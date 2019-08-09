@@ -2,6 +2,8 @@
   file:
     path: ~/devel
     state: directory
+  tags:
+    - bootstrap
 
 - name: Clone repositories for work
   git:
@@ -16,3 +18,16 @@
     - { org: pulp, repo: pulp_python}
     - { org: pulp, repo: pulplift}
     - { org: pulp, repo: ansible-pulp}
+  tags:
+    - bootstrap
+
+- name: Install Required packages for pulplift
+  package:
+    name="{{item}}"
+    state=present
+  with_items:
+    - vagrant
+    - vagrant-sshfs
+  become: yes
+  tags:
+    - bootstrap
