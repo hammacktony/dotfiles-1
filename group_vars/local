@@ -28,5 +28,4 @@ vim_install_plugins: yes
 utilities_to_install:
   - httpie
   - wget
-  - google-chrome
   - vagrant

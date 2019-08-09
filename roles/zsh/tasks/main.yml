@@ -1,6 +1,13 @@
+- name: Make sure zsh is installed
+  package:
+    name=zsh
+    state=present
+  become: true
 
-# Installation and setup
-- include: redhat.yml
+- name: Change default shell to zsh
+  user:
+    name="{{ ansible_user_id }}"
+    shell="/bin/zsh"
 
 # Configuration
 - name: Check if zshrc already exists

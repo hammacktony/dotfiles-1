@@ -5,7 +5,7 @@
 - name: Set up local development environment
   hosts: local
   roles:
-    - dnf
-    - git
-    - vim
-    - zsh
+    # - git
+    # - vim
+    # - zsh
+    - pulp

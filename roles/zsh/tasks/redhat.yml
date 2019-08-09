@@ -1,7 +1,0 @@
-- name: Make sure zsh is installed
-  dnf: name=zsh state=present
-  become: true
-
-- name: Change default shell to zsh
-  user: name={{ansible_user_id}} shell=/bin/zsh
-  become: true

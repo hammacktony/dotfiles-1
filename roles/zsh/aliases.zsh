@@ -16,7 +16,9 @@ alias vi="vim"
 alias v="vim"
 
 # Pulp
-alias pssh='cd ~/3dev/devel && vagrant ssh'
-alias jp='cd ~/3dev/pulp'
-alias jd='cd ~/3dev/devel'
+alias jp='cd ~/devel/pulpcore'
+alias jpp='cd ~/devel/pulpcore-plugin'
+alias jd='cd ~/devel/pulp_docker'
+alias jf='cd ~/devel/pulp_file'
+alias jpy='cd ~/devel/pulp_python'
 alias rmmig='rm -rf ~/3dev/pulp/platform/pulpcore/app/migrations'

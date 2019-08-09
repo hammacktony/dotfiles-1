@@ -1,6 +1,0 @@
-
-- name: Upgrade all packages
-  dnf:
-    name: "*"
-    state: latest
-  sudo: yes

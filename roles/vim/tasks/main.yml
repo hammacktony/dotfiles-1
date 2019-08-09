@@ -1,5 +1,8 @@
 - name: install vim
-  include: redhat.yml
+  package:
+    name=vim
+    state=present
+  become: yes
 
 # Plugin manager
 - name: Makes sure autoload directory exists

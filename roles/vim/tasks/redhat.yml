@@ -1,5 +1,0 @@
-- name: Install vim with yum
-  dnf:
-    name=vim
-    state=latest
-  sudo: yes

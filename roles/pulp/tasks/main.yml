@@ -1,0 +1,18 @@
+- name: create devel directory
+  file:
+    path: ~/devel
+    state: directory
+
+- name: Clone repositories for work
+  git:
+    repo: "git@github.com:{{item.org}}/{{item.repo}}.git"
+    dest: "~/devel/{{item.repo}}"
+    remote: "pulp"
+  with_items:
+    - { org: pulp, repo: pulpcore}
+    - { org: pulp, repo: pulpcore-plugin}
+    - { org: pulp, repo: pulp_file}
+    - { org: pulp, repo: pulp_docker}
+    - { org: pulp, repo: pulp_python}
+    - { org: pulp, repo: pulplift}
+    - { org: pulp, repo: ansible-pulp}
