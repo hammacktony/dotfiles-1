@@ -31,3 +31,26 @@
   become: yes
   tags:
     - bootstrap
+
+- name: Install packages used with pulp
+  package:
+    name="{{item}}"
+    state=present
+  become: yes
+  with_items:
+    - httpie
+
+- name: Install virtualenv via pip
+  pip:
+    name: "{{item}}"
+    executable: pip3
+  with_items:
+    - virtualenv
+  become: yes
+
+- name: Install python packages into dev venv
+  pip:
+    virtualenv: ~/.virtualenvs/dev
+    name: "{{item}}"
+  with_items:
+    - ipdb

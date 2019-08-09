@@ -74,3 +74,7 @@ function hit() {
 function sst() {
   ssh "$1" -t tmux attach
 }
+
+function workon() {
+  source "/home/austin/.virtualenvs/$1/bin/activate"
+}
