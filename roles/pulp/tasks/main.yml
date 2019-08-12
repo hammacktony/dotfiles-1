@@ -54,3 +54,4 @@
     name: "{{item}}"
   with_items:
     - ipdb
+    - flake8
